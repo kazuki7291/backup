@@ -51,8 +51,36 @@ public class SellItemConfirmAction extends ActionSupport implements SessionAware
 		return result;
 	}
 
-	@Override
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+	public SellItemConplateDAO getSellItemComplateDAO() {
+		return sellItemComplateDAO;
+	}
+
+	public void setSellItemComplateDAO(SellItemConplateDAO sellItemComplateDAO) {
+		this.sellItemComplateDAO = sellItemComplateDAO;
+	}
+
+	public BuyItemDAO getBuyItemDAO() {
+		return buyItemDAO;
+	}
+
+	public void setBuyItemDAO(BuyItemDAO buyItemDAO) {
+		this.buyItemDAO = buyItemDAO;
+	}
+
+	public List<BuyItemDTO> getBuyItemList() {
+		return buyItemList;
+	}
+
+	public void setBuyItemList(List<BuyItemDTO> buyItemList) {
+		this.buyItemList = buyItemList;
+	}
+
 }
