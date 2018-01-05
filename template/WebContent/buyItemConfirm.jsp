@@ -82,33 +82,35 @@
 		</s:if>
 		<s:else>
 			<s:form>
+			<s:iterator value = "buyitemCartList">
 				<tr>
-					<td>商品名</td>
-					<s:iterator value = "buyitemCartList">
-						<td>
-							<s:property value="itemName" />
-						</td>
-					</s:iterator>
+					<td>
+						<s:property value="itemName" />
+					</td>
+					<td>
+						<s:property value="itemPrice" />
+					</td>
+					<td></td>
+					<td>
+						<s:property value="Count" /><span>個</span>
+					</td>
+					<td>
+						<input type="checkbox" name="DeleteFlag">
+					</td>
 				</tr>
-				<tr>
-					<td>値段</td>
-					<s:iterator value = "buyitemCartList">
-						<td><s:property value="itemPrice" /><span>円</span></td>
-					</s:iterator>
-				</tr>
-				<tr>
-					<td>購入個数</td>
-					<s:iterator value = "buyitemCartList">
-						<td><s:property value="count" /><span>個</span></td>
-					</s:iterator>
-				</tr>
+			</s:iterator>
 				<tr>
 					<td>合計金額</td>
 					<td><s:property value="session.total_price"/></td>
+					<td>合計個数</td>
+					<td><s:property value="session.total_count"/><span>個</span></td>
 				</tr>
 				<tr>
 					<td>支払い方法</td>
 					<td><s:property value="session.pay" /></td>
+					<td>
+						<input type="button" value="削除" onclick="submitAction('DeleteCartAction')" />
+					</td>
 				</tr>
 			</s:form>
 		</s:else>
@@ -120,7 +122,7 @@
 				</tr>
 				<tr>
 					<td><input type="button" value="戻る" onclick="submitAction('HomeAction')" /></td>
-					<td><input type="button" value="完了" onclick="submitAction('BuyItemConfirmAction')" /></td>
+					<td><input type="button" value="購入" onclick="submitAction('BuyItemConfirmAction')" /></td>
 				</tr>
 			</s:form>
 		</div>
