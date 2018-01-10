@@ -21,7 +21,6 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware{
 	 *
 	 * @author internous
 	 */
-	@SuppressWarnings("unchecked")
 	public String execute() throws SQLException {
 
 		buyItemComplateDAO.buyItemeInfo(

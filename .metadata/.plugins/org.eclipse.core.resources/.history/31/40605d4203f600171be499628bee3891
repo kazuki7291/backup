@@ -25,7 +25,7 @@ public class BuyItemDAO {
 	 *
 	 * @return BuyItemDTO
 	 */
-	public List<BuyItemDTO> getBuyItemInfo() {
+	public List getBuyItemInfo() {
 
 		String sql = "SELECT id, item_name, item_price FROM item_info_transaction";
 

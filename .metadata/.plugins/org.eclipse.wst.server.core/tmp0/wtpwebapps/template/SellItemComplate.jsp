@@ -65,6 +65,10 @@
 		<div id="top">
 			<p>SellItemComplate</p>
 		</div>
+		<form action="GoHomeAction">
+		商品を販売しました。
+		<s:submit value="戻る" />
+		</form>
 
 	</div>
 	<div id="footer">
