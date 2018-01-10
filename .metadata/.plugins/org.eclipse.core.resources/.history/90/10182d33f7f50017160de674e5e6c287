@@ -1,0 +1,67 @@
+package com.internousdev.template.action;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.template.dto.BuyItemCartDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class DeleteCartAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+	private List<String> DeleteFlag;
+
+	public String execute(){
+		@SuppressWarnings("unchecked")
+		List<BuyItemCartDTO> buyItemCartList = (List<BuyItemCartDTO>) session.get("buyitemCartList");
+		int total_price = (int) session.get("total_price");
+		int total_count = (int) session.get("total_count");
+		BuyItemCartDTO buyItemCartDTO;
+
+		System.out.println("test1");
+
+		for(int i=0; i<DeleteFlag.size(); i++){
+			for(int j=0; j<buyItemCartList.size();j++){
+				buyItemCartDTO = buyItemCartList.get(j);
+				System.out.println("test2");
+				if(DeleteFlag.get(i) == buyItemCartDTO.getId()){
+					System.out.println("test3");
+					//削除された分　合計から個数と値段を引き格納する
+					total_count = total_count - buyItemCartDTO.getCount();
+					total_price = total_price - (buyItemCartDTO.getCount() * Integer.parseInt(buyItemCartDTO.getItemPrice()));
+					session.put("total_price", total_price);
+					session.put("total_count", total_count);
+					buyItemCartList.remove(j);
+
+					session.put("buyitemCartList",buyItemCartList);
+				}
+			}
+		}
+		return SUCCESS;
+	}
+
+	public List<String> getDeleteFlag() {
+		return DeleteFlag;
+	}
+
+
+
+	public void setDeleteFlag(List<String> deleteFlag) {
+		DeleteFlag = deleteFlag;
+	}
+
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+
+}

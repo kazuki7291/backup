@@ -9,8 +9,12 @@
 	<!-- 対象のpackageを設定 -->
 	<package name="com.internousdev.template.action" extends="struts-default">
 
+		<!-- GobuyItemConfirmAction -->
+			<action name="GobuyItemConfirmAction" class="com.internousdev.template.action.GobuyItemConfirmAction" method="execute">
+			<result name="success">buyItemConfirm.jsp</result>
+		</action>
 		<!-- SellItemConfirmAction -->
-		<action name="SellItemAction" class="com.internousdev.template.action.SellItemConfirmAction" method="execute">
+		<action name="SellItemConfirmAction" class="com.internousdev.template.action.SellItemConfirmAction" method="execute">
 			<result name="success">SellItemComplate.jsp</result>
 		</action>
 
@@ -59,7 +63,7 @@
 
 		<!-- BuyItemAction -->
 		<action name="BuyItemAction" class="com.internousdev.template.action.BuyItemAction" method="execute">
-			<result name="success">buyItemConfirm.jsp</result>
+			<result name="success">cart.jsp</result>
 		</action>
 
 		<!-- BuyItemConfirmAction -->
@@ -82,6 +86,11 @@
 		<!-- LogoutAction -->
 		<action name="LogoutAction" class="com.internousdev.template.action.LogoutAction" method="execute">
 			<result name="success">login.jsp</result>
+		</action>
+
+		<!-- DeleteCartAction -->
+		<action name="DeleteCartAction" class="com.internousdev.template.action.DeleteCartAction" method="execute">
+			<result name="success">cart.jsp</result>
 		</action>
 
 	</package>

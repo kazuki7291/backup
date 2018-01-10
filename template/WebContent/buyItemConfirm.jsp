@@ -81,8 +81,8 @@
 			<td>商品情報がありません。</td>
 		</s:if>
 		<s:else>
-			<s:form>
-			<s:iterator value = "buyitemCartList">
+			<s:form action="DeleteCartAction">
+			<s:iterator value = "session.buyitemCartList">
 				<tr>
 					<td>
 						<s:property value="itemName" />
@@ -92,10 +92,7 @@
 					</td>
 					<td></td>
 					<td>
-						<s:property value="Count" /><span>個</span>
-					</td>
-					<td>
-						<input type="checkbox" name="DeleteFlag">
+						<s:property value="count" /><span>個</span>
 					</td>
 				</tr>
 			</s:iterator>
@@ -108,9 +105,6 @@
 				<tr>
 					<td>支払い方法</td>
 					<td><s:property value="session.pay" /></td>
-					<td>
-						<input type="button" value="削除" onclick="submitAction('DeleteCartAction')" />
-					</td>
 				</tr>
 			</s:form>
 		</s:else>
@@ -122,7 +116,7 @@
 				</tr>
 				<tr>
 					<td><input type="button" value="戻る" onclick="submitAction('HomeAction')" /></td>
-					<td><input type="button" value="購入" onclick="submitAction('BuyItemConfirmAction')" /></td>
+					<td><input type="button" value="確定" onclick="submitAction('BuyItemConfirmAction')" /></td>
 				</tr>
 			</s:form>
 		</div>

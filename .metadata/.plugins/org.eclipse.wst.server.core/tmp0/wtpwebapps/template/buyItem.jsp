@@ -70,7 +70,7 @@ table {
 		<div>
 			<s:form action="BuyItemAction">
 				<table>
-				<s:iterator value="buyItemList">
+				<s:iterator value="session.buyItemList">
 						<tr>
 							<td><span>商品名</span></td>
 							<td><s:property value="itemName" /></td>
@@ -100,16 +100,6 @@ table {
 							</td>
 						</tr>
 						</s:iterator>
-					<tr>
-						<td>
-							<span>支払い方法</span>
-						</td>
-						<td>
-							<input type="radio" name="pay" value="1" checked="checked">現金払い
-							<input type="radio" name="pay" value="2">クレジットカード（一括）
-							<input type="radio" name="pay" value="3">クレジットカード（分割）
-						</td>
-					</tr>
 					<tr>
 						<td>
 							<s:submit value="購入" />

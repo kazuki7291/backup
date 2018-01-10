@@ -1,0 +1,50 @@
+package com.internousdev.template.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.template.dto.BuyItemCartDTO;
+import com.mysql.fabric.xmlrpc.base.Array;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class DeleteCartAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+	private List<Boolean> DeleteFlag = new ArrayList<>();
+
+	public String execute(){
+		@SuppressWarnings("unchecked")
+		List<BuyItemCartDTO> buyItemCartList = (List<BuyItemCartDTO>) session.get("buyitemCartList");
+		int total_price = (int) session.get("total_price");
+		int total_count = (int) session.get("total_count");
+		BuyItemCartDTO buyItemCartDTO;
+		for(int i=0; i<buyItemCartList.size(); i++){
+			if(DeleteFlag){
+				buyItemCartDTO = buyItemCartList.get(i);
+				total_count = total_count - buyItemCartDTO.getCount();
+				total_price = total_price - (buyItemCartDTO.getCount() * Integer.parseInt(buyItemCartDTO.getItemPrice()));
+				session.put("total_price", total_price);
+				session.put("total_count", total_count);
+				System.out.println(total_count);
+				System.out.println(total_price);
+				buyItemCartList.remove(i);
+			}
+			session.put("buyitemCartList",buyItemCartList);
+		}
+		return SUCCESS;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+
+}

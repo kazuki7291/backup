@@ -19,11 +19,6 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 	private List<String> count;
 
 	/**
-	 * 支払い方法
-	 */
-	private String pay;
-
-	/**
 	 * アイテム情報を格納
 	 */
 	public Map<String, Object>  session;
@@ -64,20 +59,6 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 		session.put("total_price", total_price);
 
 		session.put("buyitemCartList", buyitemCartList);
-
-		String payment;
-
-		if(pay.equals("1")) {
-
-			payment = "現金払い";
-			session.put("pay", payment);
-		} else if(pay.equals(2)) {
-			payment = "クレジットカード（一括）";
-			session.put("pay", payment);
-		} else{
-				payment = "クレジットカード（分割）";
-				session.put("pay", payment);
-		}
 		return result;
 	}
 
@@ -87,14 +68,6 @@ public class BuyItemAction extends ActionSupport implements SessionAware {
 
 	public void setCount(List<String> count) {
 		this.count = count;
-	}
-
-	public String getPay() {
-		return pay;
-	}
-
-	public void setPay(String pay) {
-		this.pay = pay;
 	}
 
 	public Map<String, Object> getSession() {
