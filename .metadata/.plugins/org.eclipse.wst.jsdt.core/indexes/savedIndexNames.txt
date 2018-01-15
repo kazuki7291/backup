@@ -5,5 +5,4 @@ INDEX VERSION 1.3+C:\Users\testuser\Desktop\workspace\workspace-Shimizu\backup\.
 3024914829.index
 1726185529.index
 4170188757.index
-4170188757.index
 2374387041.index

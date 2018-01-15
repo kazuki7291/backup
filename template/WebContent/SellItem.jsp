@@ -71,6 +71,9 @@
 				商品価格<s:textfield name="SellItemPrice" /><br><br>
 				販売個数<s:textfield name="Sellstock" /><br><br>
 				<s:submit value="送信" />
+				<div id="text-link">
+					<p><a href='<s:url action="GoHomeAction" />'>戻る</a></p>
+				</div>
 			</div>
 		</form>
 	</div>

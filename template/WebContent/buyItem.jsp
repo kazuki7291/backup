@@ -102,7 +102,7 @@ table {
 						</s:iterator>
 					<tr>
 						<td>
-							<s:submit value="購入" />
+							<s:submit value="カートに入れる" />
 						</td>
 					</tr>
 				</table>

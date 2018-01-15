@@ -37,10 +37,9 @@ public class BuyItemComplateDAO {
 
 		Connection connection = dbConnector.getConnection();
 
-		for(int i =0; i < buyitemCartList.size(); i++ ){
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
-				preparedStatement.setString(1, buyitemCartList.get(i).getId());
+				preparedStatement.setString(1, buyitemCartList.get(0).getId());
 				preparedStatement.setString(2, total_price);
 				preparedStatement.setString(3, total_count);
 				preparedStatement.setString(4, user_master_id);
@@ -61,5 +60,5 @@ public class BuyItemComplateDAO {
 				connection.close();
 			}
 		}
-	}
+
 }
