@@ -1,5 +1,6 @@
 package com.internousdev.template.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class DeleteCartAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
 
-	private List<String> DeleteFlag;
+	private List<String> DeleteFlag = new ArrayList<>();
 
 	public String execute(){
 		if(DeleteFlag.size() != 0){

@@ -42,21 +42,29 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public String execute() throws SQLException {
 
-		if (!session.containsKey("id")) {
+		// ログインしている状態のみこのページへ移動することを許している。
+		if (!session.containsKey("login_user_id")) {
 			return ERROR;
 		}
 
+
 		// 商品履歴を削除しない場合
 		if(deleteFlg == null) {
-			String item_transaction_id = session.get("id").toString();
+			//String item_transaction_id = session.get("id").toString();
 			String user_master_id = session.get("login_user_id").toString();
 
-			myPageList = myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
+			// 購入した商品の情報を取得
+			// 引数にはユーザーIDが渡されています。
+			myPageList = myPageDAO.getMyPageUserInfo(user_master_id);
 
 			Iterator<MyPageDTO> iterator = myPageList.iterator();
 			if (!(iterator.hasNext())) {
 				myPageList = null;
 			}
+
+			// JSP側で買った商品の情報を表示するために、取得した商品の情報をSession(共通変数)へ格納します。
+			session.put("myPageList", myPageList);
+
 		// 商品履歴を削除する場合
 		} else if(deleteFlg.equals("1")) {
 			delete();
@@ -73,10 +81,10 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public void delete() throws SQLException {
 
-		String item_transaction_id = session.get("id").toString();
+		//String item_transaction_id = session.get("id").toString(); item_transaction_id,
 		String user_master_id = session.get("login_user_id").toString();
 
-		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
+		int res = myPageDAO.buyItemHistoryDelete( user_master_id);
 
 		if(res > 0) {
 			myPageList = null;

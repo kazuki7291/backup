@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.template.dao.BuyItemComplateDAO;
-import com.internousdev.template.dto.BuyItemDTO;
+import com.internousdev.template.dto.BuyItemCartDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BuyItemConfirmAction extends ActionSupport implements SessionAware{
@@ -24,8 +24,10 @@ public class BuyItemConfirmAction extends ActionSupport implements SessionAware{
 	@SuppressWarnings("unchecked")
 	public String execute() throws SQLException {
 
+		List<BuyItemCartDTO> buyItemList = (List<BuyItemCartDTO>) session.get("buyitemCartList");
+
 		buyItemComplateDAO.buyItemeInfo(
-				(List<BuyItemDTO>) session.get("buyitemCartList"),
+				buyItemList,
 				session.get("total_count").toString(),
 				session.get("total_price").toString(),
 				session.get("pay").toString(),

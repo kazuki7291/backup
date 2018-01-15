@@ -6,15 +6,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import com.internousdev.template.dto.BuyItemDTO;
+import com.internousdev.template.dto.BuyItemCartDTO;
 import com.internousdev.template.util.DBConnector;
 import com.internousdev.template.util.DateUtil;
 
 public class BuyItemComplateDAO {
-
-	private DBConnector dbConnector = new DBConnector();
-
-	private Connection connection = dbConnector.getConnection();
 
 	private DateUtil dateUtil = new DateUtil();
 
@@ -35,7 +31,12 @@ public class BuyItemComplateDAO {
 	 */
 
 	/*String item_transaction_id, String user_master_id, String total_price, String total_count, String pay*/
-	public void buyItemeInfo(List<BuyItemDTO> buyitemCartList,String total_count,String total_price ,String pay,String user_master_id) throws SQLException {
+	public void buyItemeInfo(List<BuyItemCartDTO> buyitemCartList,String total_count,String total_price ,String pay,String user_master_id) throws SQLException {
+
+		DBConnector dbConnector = new DBConnector();
+
+		Connection connection = dbConnector.getConnection();
+
 		for(int i =0; i < buyitemCartList.size(); i++ ){
 			try {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);

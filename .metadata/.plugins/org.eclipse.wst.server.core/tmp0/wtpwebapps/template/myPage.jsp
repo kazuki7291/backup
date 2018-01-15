@@ -87,7 +87,7 @@
 				<th>支払い方法</th>
 				<th>購入日</th>
 			</tr>
-			<s:iterator value="myPageList">
+			<s:iterator value="session.myPageList">
 				<tr>
 					<td><s:property value="itemName" /></td>
 					<td><s:property value="totalPrice" /><span>円</span></td>
